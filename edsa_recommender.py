@@ -53,7 +53,7 @@ def main():
     page_selection = st.sidebar.selectbox("Choose Option", page_options)
     if page_selection == "Recommender System":
         # Header contents
-        st.write('# Movie Recommender MM2')
+        st.write('# Movie Recommender MM2 JHB')
         st.write('### EXPLORE Data Science Academy Unsupervised Predict')
         st.image('resources/imgs/Image_header.png',use_column_width=True)
         # Recommender System algorithm selection
