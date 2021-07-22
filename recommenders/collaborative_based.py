@@ -42,6 +42,7 @@ import operator
 import heapq
 
 # Importing data
+<<<<<<< HEAD
 movies = pd.read_csv('resources/data/movies.csv',sep = ',')#,delimiter=',')
 ratings = pd.read_csv('resources/data/ratings.csv')
 ratings.drop(['timestamp'], axis=1,inplace=True)
@@ -64,6 +65,11 @@ movie_similarity = cosine_similarity(util_matrix_sparse.T)
 # Save the matrix as a dataframe to allow for easier indexing  
 movie_sim = pd.DataFrame(movie_similarity,index = util_matrix_norm.columns,columns = util_matrix_norm.columns)
 
+=======
+movies_df = pd.read_csv('resources/data/movies.csv',sep = ',')#,delimiter=',')
+ratings_df = pd.read_csv('resources/data/ratings.csv')
+ratings_df.drop(['timestamp'], axis=1,inplace=True)
+>>>>>>> 58811aa077d9219fb93cbe360037901af16f3374
 
 # We make use of an SVD model trained on a subset of the MovieLens 10k dataset.
 model=pickle.load(open('resources/models/SVD.pkl', 'rb'))
