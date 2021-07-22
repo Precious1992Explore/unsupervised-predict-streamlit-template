@@ -42,34 +42,9 @@ import operator
 import heapq
 
 # Importing data
-<<<<<<< HEAD
-movies = pd.read_csv('resources/data/movies.csv',sep = ',')#,delimiter=',')
-ratings = pd.read_csv('resources/data/ratings.csv')
-ratings.drop(['timestamp'], axis=1,inplace=True)
-
-
-#merge the datasets
-rate= pd.merge(ratings[['userId','movieId','rating']],movies[['title',"movieId"]],on = "movieId")
-util_matrix = rate.pivot_table(index=['title'], columns=['userId'],values='rating')  
-# Normalize each row (a given user's ratings) of the utility matrix
-util_matrix_norm = util_matrix.apply(lambda x: (x-np.mean(x))/(np.max(x)-np.min(x)), axis=1)
-# Fill Nan values with 0's, transpose matrix, and drop users with no ratings
-util_matrix_norm.fillna(0, inplace=True)
-util_matrix_norm = util_matrix_norm.T
-util_matrix_norm = util_matrix_norm.loc[:, (util_matrix_norm != 0).any(axis=0)]
-# Save the utility matrix in scipy's sparse matrix format
-util_matrix_sparse = sp.sparse.csr_matrix(util_matrix_norm.values)
-
-# Compute the similarity matrix using the cosine similarity metric
-movie_similarity = cosine_similarity(util_matrix_sparse.T)
-# Save the matrix as a dataframe to allow for easier indexing  
-movie_sim = pd.DataFrame(movie_similarity,index = util_matrix_norm.columns,columns = util_matrix_norm.columns)
-
-=======
 movies_df = pd.read_csv('resources/data/movies.csv',sep = ',')#,delimiter=',')
 ratings_df = pd.read_csv('resources/data/ratings.csv')
 ratings_df.drop(['timestamp'], axis=1,inplace=True)
->>>>>>> 58811aa077d9219fb93cbe360037901af16f3374
 
 # We make use of an SVD model trained on a subset of the MovieLens 10k dataset.
 model=pickle.load(open('resources/models/SVD.pkl', 'rb'))
